@@ -1,0 +1,57 @@
+import sqlite3
+def create():
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("CREATE TABLE data(rollno INTEGER,name TEXT , marks REAL)")
+  conn.commit()
+  conn.close()
+#create()
+def insert(roll,nam,mark):
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("INSERT INTO data VALUES(?,?,?)",(roll,nam,mark))
+  conn.commit()
+  conn.close()
+#insert(21,'advsb',100.0)
+#insert(12,'avd',87)
+#insert(33,'davfsb',97)
+def view():
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("SELECT * FROM data")
+  rows= cur.fetchall()
+  conn.commit()
+  conn.close()
+  return rows
+def delete(roll):
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("DELETE FROM data WHERE rollno=?",(roll,))
+  conn.commit()
+  conn.close()
+#delete(14)
+
+def update1(mark,roll,name):
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("UPDATE data SET  marks=? ,rollno=? WHERE name=?" ,(mark,roll,name))
+  conn.commit()
+  conn.close()
+def update2(name,roll,marks):
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("UPDATE data SET  name=? , rollno=? WHERE marks=?" ,(name,roll,marks))
+  conn.commit()
+  conn.close()
+def update3(name,marks,roll):
+  conn=sqlite3.connect('sqlite_or_inbulit_database/lit.db')
+  cur=conn.cursor()
+  cur.execute("UPDATE data SET  name=? , marks=? WHERE rollno=?" ,(name,marks,roll))
+  conn.commit()
+  conn.close()
+#update1(200,12,'avd')
+#pdate2('red',16,97.0)
+#update3('first',93,1)
+#update3('s',46,2)
+#update3('t',76,3)
+print(view())
