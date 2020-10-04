@@ -1,8 +1,6 @@
 --for qrcode generator
 
---for python/googlesearch.py
-
-
+pip install qrcode
 
 --for python/googlesearch.py
 
