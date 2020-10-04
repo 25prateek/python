@@ -1,3 +1,7 @@
+--for database
+
+pip install mysql-connector-python
+
 --for qrcode generator
 
 pip install qrcode
